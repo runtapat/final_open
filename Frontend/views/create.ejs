@@ -1,0 +1,20 @@
+<h1>➕ เพิ่มหนังสือ</h1>
+<form method="POST" action="/create">
+    <label>ชื่อหนังสือ:</label> <input type="text" name="title" required><br><br>
+    <label>ราคา:</label> <input type="number" name="price" required><br><br>
+
+    <label><b>ผู้แต่ง:</b></label><br>
+    <select name="authorId">
+        <option value="">-- เลือกจากระบบ --</option>
+        <% authors.forEach(a => { %><option value="<%= a.id %>"><%= a.name %></option><% }) %>
+    </select>
+    หรือ <input type="text" name="newAuthorName" placeholder="พิมพ์ชื่อผู้แต่งใหม่"><br><br>
+
+    <label>หมวดหมู่:</label>
+    <select name="genreId" required>
+        <option value="">-- เลือก --</option>
+        <% genres.forEach(g => { %><option value="<%= g.id %>"><%= g.name %></option><% }) %>
+    </select><br><br>
+
+    <button type="submit">บันทึก</button>
+</form>

@@ -1,0 +1,20 @@
+<h1>📊 Report: แยกตามหมวดหมู่</h1>
+<a href="/">🔙 กลับ</a><br><br>
+<form method="GET" action="/report">
+    <select name="genreId">
+        <option value="">-- ทุกหมวดหมู่ --</option>
+        <% genres.forEach(g => { %>
+            <option value="<%= g.id %>" <%= selectedGenre == g.id ? 'selected' : '' %>><%= g.name %></option>
+        <% }) %>
+    </select>
+    <button type="submit">ค้นหา</button>
+</form><br>
+<table border="1" cellpadding="8">
+    <tr style="background: #d4edda;"><th>ชื่อหนังสือ</th><th>ราคา</th><th>ผู้แต่ง</th><th>หมวดหมู่</th></tr>
+    <% books.forEach(b => { %>
+    <tr>
+        <td><%= b.title %></td><td><%= b.price %></td>
+        <td><%= b.author ? b.author.name : '-' %></td><td><%= b.genre ? b.genre.name : '-' %></td>
+    </tr>
+    <% }) %>
+</table>

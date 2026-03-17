@@ -1,0 +1,17 @@
+{
+  "authors": [
+    { "id": 1, "name": "J.K. Rowling" },
+    { "id": 2, "name": "Stephen King" },
+    { "id": 3, "name": "Nantapat" }
+  ],
+  "categories": [
+    { "id": 1, "name": "แฟนตาซี" },
+    { "id": 2, "name": "สยองขวัญ" },
+    { "id": 3, "name": "นิยายวิทยาศาสตร์" }
+  ],
+  "books": [
+    { "title": "Harry Potter 1", "price": 350, "authorId": 1, "genreId": 1 },
+    { "title": "IT", "price": 400, "authorId": 2, "genreId": 2 },
+    { "title": "The Stand", "price": 300, "authorId": 3, "genreId": 3 }
+  ]
+}
