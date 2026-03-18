@@ -54,7 +54,13 @@ app.get('/books', async (req, res) => {
 // [READ] ดึงข้อมูลย่อย
 app.get('/authors', async (req, res) => res.json(await Author.findAll()));
 app.get('/genres', async (req, res) => res.json(await Genre.findAll()));
-app.get('/books/:id', async (req, res) => res.json(await Book.findByPk(req.params.id)));
+// ใน Backend/app.js ควรเป็นแบบนี้ครับ
+app.get('/books/:id', async (req, res) => {
+    const book = await Book.findByPk(req.params.id, { 
+        include: [Author, Genre] // 🌟 ต้องมีบรรทัดนี้ ไม่งั้นชื่อผู้แต่งจะไม่มา!
+    });
+    res.json(book);
+});
 
 // [CREATE] เพิ่มหนังสือ & รองรับชื่อผู้แต่งใหม่
 app.post('/books', async (req, res) => {
@@ -78,5 +84,7 @@ app.delete('/books/:id', async (req, res) => {
     await Book.destroy({ where: { id: req.params.id } });
     res.send('Deleted');
 });
+
+
 
 app.listen(3000, () => console.log('🚀 Backend รันที่ Port 3000'));

@@ -32,6 +32,7 @@ app.get('/report', async (req, res) => {
     });
 });
 
+
 // [เพิ่มข้อมูล]
 app.get('/create', async (req, res) => {
     const authors = await axios.get(`${BASE_URL}/authors`);
@@ -62,6 +63,11 @@ app.post('/edit/:id', async (req, res) => {
 app.get('/delete/:id', async (req, res) => {
     await axios.delete(`${BASE_URL}/books/${req.params.id}`);
     res.redirect('/');
+});
+
+app.get('/view/:id', async (req, res) => {
+    const response = await axios.get(`${BASE_URL}/books/${req.params.id}`);
+    res.render('view', { book: response.data });
 });
 
 app.listen(5000, () => console.log('🌐 http://localhost:5000'));

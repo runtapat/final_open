@@ -1,15 +1,21 @@
 <h1>📚 หน้าหลัก: ระบบหนังสือ</h1>
 <a href="/create">➕ เพิ่มหนังสือ</a> | <a href="/report">📊 รีพอร์ต</a><br><br>
+
 <table border="1" cellpadding="8">
     <tr style="background: #eee;">
-        <th>ชื่อหนังสือ</th><th>ราคา</th><th>ผู้แต่ง</th><th>หมวดหมู่</th><th>จัดการ</th>
+        <th>ชื่อหนังสือ</th>
+        <th>ราคา</th>
+        <th>จัดการ</th>
     </tr>
     <% books.forEach(b => { %>
     <tr>
-        <td><%= b.title %></td><td><%= b.price %></td>
-        <td><%= b.author ? b.author.name : '-' %></td>
-        <td><%= b.genre ? b.genre.name : '-' %></td>
-        <td><a href="/edit/<%= b.id %>">แก้ไข</a> | <a href="/delete/<%= b.id %>">ลบ</a></td>
+        <td><%= b.title %></td>
+        <td><%= b.price %></td>
+        <td>
+            <a href="/view/<%= b.id %>">🔍 ดูรายละเอียด</a> | 
+            <a href="/edit/<%= b.id %>">แก้ไข</a> | 
+            <a href="/delete/<%= b.id %>">ลบ</a>
+        </td>
     </tr>
     <% }) %>
 </table>

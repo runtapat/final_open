@@ -1,0 +1,10 @@
+<h1>🔍 รายละเอียดหนังสือ</h1>
+<div style="border: 1px solid #ccc; padding: 20px; width: 300px;">
+    <p><b>ชื่อหนังสือ:</b> <%= book.title %></p>
+    <p><b>ราคา:</b> <%= book.price %> บาท</p>
+    <hr>
+    <p><b>ผู้แต่ง:</b> <%= book.author ? book.author.name : '-' %></p>
+    <p><b>หมวดหมู่:</b> <%= book.genre ? book.genre.name : '-' %></p>
+</div>
+<br>
+<a href="/">🔙 กลับหน้าหลัก</a>
