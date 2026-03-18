@@ -1,12 +1,13 @@
 const express = require('express');
 const axios = require('axios');
+const path = require('path');
 const app = express();
 
 const BASE_URL = "http://localhost:3000"; // โทรหา Backend พอร์ต 3000
 
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 app.use(express.urlencoded({ extended: true })); // ขาดไม่ได้ ไว้อ่าน Form
-
 // [หน้าแรก]
 app.get('/', async (req, res) => {
     const response = await axios.get(`${BASE_URL}/books`);
